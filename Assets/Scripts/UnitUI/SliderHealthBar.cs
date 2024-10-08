@@ -8,8 +8,6 @@ public class SliderHealthBar : MonoBehaviour
     [SerializeField] private Slider _slider;
 
     private IHealth _health;
-    private int _currentAmount;
-    private int _maxAmount;
 
     private void Awake()
     {
