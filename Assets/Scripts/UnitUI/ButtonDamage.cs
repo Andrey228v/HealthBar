@@ -1,24 +1,21 @@
-using Assets.Scripts.Service.Health;
+using Assets.Scripts.UnitUI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
-public class ButtonDamage : MonoBehaviour, IPointerUpHandler
+public class ButtonDamage : ButtonUI, IPointerUpHandler
 {
-    [SerializeField] private HealthSystem _health;
-
     private int _damage = 10;
-    private Button _button;
 
-    private void Awake()
+    public override void Awake()
     {
-        _button = GetComponent<Button>();
-        _button.image.color = Color.red;
+        base.Awake();
+
+        Button.image.color = Color.red;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        _health.GetDamage(_damage);
+        Health.GetDamage(_damage);
     }
 }

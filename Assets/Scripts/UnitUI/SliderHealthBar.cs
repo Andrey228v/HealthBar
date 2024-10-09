@@ -1,36 +1,15 @@
 using UnityEngine.UI;
 using UnityEngine;
 using Assets.Scripts.Service;
+using Assets.Scripts.UnitUI;
 
 [RequireComponent(typeof(IHealth))]
-public class SliderHealthBar : MonoBehaviour
+public class SliderHealthBar : SliderUI
 {
-    [SerializeField] private Slider _slider;
-
-    private IHealth _health;
-
-    private void Awake()
+    public override void ChangeData()
     {
-        _health = GetComponent<IHealth>();
+        base.ChangeData();
 
-        _health.isDamaged += ChangeData;
-        _health.isHealed += ChangeData;
-    }
-
-    private void Start()
-    {
-        _slider.value = _health.HealthAmount;
-        _slider.maxValue = _health.MaxHealth;
-    }
-
-    private void OnDestroy()
-    {
-        _health.isDamaged -= ChangeData;
-        _health.isHealed -= ChangeData;
-    }
-
-    public void ChangeData()
-    {
-        _slider.value = _health.HealthAmount;
+        Slider.value = Health.HealthAmount;
     }
 }

@@ -1,28 +1,17 @@
 using Assets.Scripts.Service;
+using Assets.Scripts.UnitUI;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(IHealth))]
-public class SmothSliderHealthBar : MonoBehaviour
+public class SmothSliderHealthBar : SliderUI
 {
-    [SerializeField] private Slider _slider;
     [SerializeField] private int _speedReduction;
 
-    private IHealth _health;
-
-    private void Awake()
+    public override void Update()
     {
-        _health = GetComponent<IHealth>();
-    }
+        base.Update();
 
-    private void Start()
-    {
-        _slider.value = _health.HealthAmount;
-        _slider.maxValue = _health.MaxHealth;
-    }
-
-    public void Update()
-    {
-        _slider.value = Mathf.MoveTowards(_slider.value, _health.HealthAmount, _speedReduction * Time.deltaTime);
+        Slider.value = Mathf.MoveTowards(Slider.value, Health.HealthAmount, _speedReduction * Time.deltaTime);
     }
 }
