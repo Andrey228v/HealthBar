@@ -14,25 +14,25 @@ public class TextHealthBar : MonoBehaviour
     {
         _health = GetComponent<IHealth>();
 
-        _health.isDamaged += ChangeData;
-        _health.isHealed += ChangeData;
+        _health.Damaged += ChangeData;
+        _health.Healed += ChangeData;
     }
 
     private void OnDestroy()
     {
-        _health.isDamaged -= ChangeData;
-        _health.isHealed -= ChangeData;
+        _health.Damaged -= ChangeData;
+        _health.Healed -= ChangeData;
     }
 
     private void Start()
     {
-        _textHP = "HP: " + _health.HealthAmount + "/" + _health.MaxHealth;
+        _textHP = "HP: " + _health.Amount + "/" + _health.MaxAmount;
         _healthText.text = _textHP;
     }
 
     public void ChangeData()
     {
-        _textHP = "HP: " + _health.HealthAmount + "/" + _health.MaxHealth;
+        _textHP = "HP: " + _health.Amount + "/" + _health.MaxAmount;
         _healthText.text = _textHP;
     } 
 }

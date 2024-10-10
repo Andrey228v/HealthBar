@@ -1,6 +1,6 @@
 ﻿using UnityEngine.UI;
-using UnityEngine;
 using Assets.Scripts.Service;
+using UnityEngine;
 
 namespace Assets.Scripts.UnitUI
 {
@@ -18,24 +18,29 @@ namespace Assets.Scripts.UnitUI
             Health = GetComponent<IHealth>();
             Slider = _slider;
 
-            Health.isDamaged += ChangeData;
-            Health.isHealed += ChangeData;
+            Health.Damaged += ChangeData;
+            Health.Healed += ChangeData;
         }
 
         private void Start()
         {
-            Slider.value = Health.HealthAmount;
-            Slider.maxValue = Health.MaxHealth;
+            Slider.value = Health.Amount;
+            Slider.maxValue = Health.MaxAmount;
         }
 
         private void OnDestroy()
         {
-            Health.isDamaged -= ChangeData;
-            Health.isHealed -= ChangeData;
+            Health.Damaged -= ChangeData;
+            Health.Healed -= ChangeData;
         }
 
-        public virtual void Update(){}
+        private void Update()
+        {
+            UpdateAmount();
+        }
 
         public virtual void ChangeData(){}
+
+        public virtual void UpdateAmount(){}
     }
 }

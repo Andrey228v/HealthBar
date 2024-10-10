@@ -16,6 +16,6 @@ public class ButtonDamage : ButtonUI, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Health.GetDamage(_damage);
+        Health.TakeDamage(_damage);
     }
 }

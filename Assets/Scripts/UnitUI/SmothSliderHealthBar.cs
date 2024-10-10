@@ -1,17 +1,14 @@
-using Assets.Scripts.Service;
-using Assets.Scripts.UnitUI;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
+using Assets.Scripts.UnitUI;
 
-[RequireComponent(typeof(IHealth))]
 public class SmothSliderHealthBar : SliderUI
 {
     [SerializeField] private int _speedReduction;
 
-    public override void Update()
+    public override void UpdateAmount()
     {
-        base.Update();
-
-        Slider.value = Mathf.MoveTowards(Slider.value, Health.HealthAmount, _speedReduction * Time.deltaTime);
+        base.UpdateAmount();
+        Slider.value = Mathf.MoveTowards(Slider.value, Health.Amount, _speedReduction * Time.deltaTime);
     }
 }

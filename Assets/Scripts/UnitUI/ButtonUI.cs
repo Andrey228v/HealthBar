@@ -7,10 +7,10 @@ namespace Assets.Scripts.UnitUI
     [RequireComponent(typeof(Button))]
     public class ButtonUI: MonoBehaviour
     {
-        [SerializeField] private HealthSystem _health;
+        [SerializeField] private Health _health;
 
         public Button Button {get; private set;}
-        public HealthSystem Health { get; private set; }
+        public Health Health { get; private set; }
 
         public virtual void Awake()
         {

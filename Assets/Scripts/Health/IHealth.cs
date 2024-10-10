@@ -4,15 +4,15 @@ namespace Assets.Scripts.Service
 {
     public interface IHealth
     {
-        public event Action isDead;
-        public event Action isHealed;
-        public event Action isDamaged;
+        public event Action Died;
+        public event Action Healed;
+        public event Action Damaged;
 
-        public int HealthAmount { get; }
-        public int MaxHealth { get; }
+        public int Amount { get; }
+        public int MaxAmount { get; }
 
-        public void GetDamage(int damage);
+        public void TakeDamage(int damage);
 
-        public bool TryGetHealth(int healthPoints);
+        public bool TryTakeHealing(int healthPoints);
     }
 }

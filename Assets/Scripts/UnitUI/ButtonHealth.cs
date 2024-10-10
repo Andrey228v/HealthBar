@@ -16,6 +16,6 @@ public class ButtonHealth : ButtonUI, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Health.TryGetHealth(_healthPoints);
+        Health.TryTakeHealing(_healthPoints);
     }
 }
